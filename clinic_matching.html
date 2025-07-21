@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="section">
+    {% for clinic in clinic_list %}
+    <br>
+    <h1>{{clinic["Clinic"]}}</h1>
+    <hr />
+    {% for am_shift in clinic["Shifts"]["AM"] %}
+    <h2>AM: {{am_shift[0]}} at {{am_shift[1]}} AM, {{am_shift[2]}} slots left</h2>
+    {% endfor %}
+    {% for pm_shift in clinic["Shifts"]["PM"] %}
+    <h2>PM: {{pm_shift[0]}} at {{pm_shift[1]}} PM, {{pm_shift[2]}} slots left</h2>
+    {% endfor %}
+    {% endfor %}
+    <br>
+    </div>
+    <hr>
+    <div>
+    <h1>Students</h1>
+    <div>
+    {% for student in student_list %}
+    <h2 style="color: red">{{student["Student"]}}</h2>
+    <h2>AM: {{student["Shifts"]["AM"]}}</h2>
+    <h2>PM: {{student["Shifts"]["PM"]}}</h2>
+    {% endfor %}
+    </div>
+
+</body>
+</html>

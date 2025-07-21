@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching</title>
+</head>
+<body>
+    <h1>Clinic Assignments</h1>
+{% for day in shift_days %}
+    <h2 style="color: red">{{ day }}</h2>
+    
+    <h3>Students on AM Shift:</h3>
+    <h2>
+    {% for shift in assignments %}
+        {% if shift['Time'] == day and shift['Session'] == 'AM' %}
+            {{ shift['Student'] }} ({{shift['Assigned Clinic']}}),
+        {% endif %}
+    {% endfor %}
+    </h2>
+
+    <h3>Students on PM Shift:</h3>
+    <h2>
+    {% for shift in assignments %}
+        {% if shift['Time'] == day and shift['Session'] == 'PM' %}
+            {{ shift['Student'] }} ({{shift['Assigned Clinic']}}),
+        {% endif %}
+    {% endfor %}
+    </h2>
+{% endfor %}
+</body>
+</html>
